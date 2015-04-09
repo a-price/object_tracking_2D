@@ -10,6 +10,7 @@
 #include <limits>
 #include <omp.h> // openmp
 #include "object_tracking_2D/Timer.h"
+#include "object_tracking_2D/ModelImport.h"
 
 CObjectModel::CObjectModel(string obj_name, int width, int height, CvMat* intrinsic, float sample_step, int maxd, bool dulledge, CEdgeTracker* edge_tracker)
   : width_(width)
@@ -1860,7 +1861,8 @@ void CObjectModel::loadObjectCADModel(string obj_name)
   if(meshmodel_ != NULL)
     free(meshmodel_);
 
-  meshmodel_ = glmReadOBJ((char *)(obj_name + std::string(".obj")).c_str());
+//  meshmodel_ = glmReadOBJ((char *)(obj_name + std::string(".obj")).c_str());
+  meshmodel_ = loadObject(obj_name + std::string(".obj"));
 
   if(!meshmodel_)
   {
