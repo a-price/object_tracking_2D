@@ -1861,8 +1861,11 @@ void CObjectModel::loadObjectCADModel(string obj_name)
   if(meshmodel_ != NULL)
     free(meshmodel_);
 
+//#ifdef USE_ASSIMP
+  meshmodel_ = loadObject(obj_name);
+//#else
 //  meshmodel_ = glmReadOBJ((char *)(obj_name + std::string(".obj")).c_str());
-  meshmodel_ = loadObject(obj_name + std::string(".obj"));
+//#endif
 
   if(!meshmodel_)
   {

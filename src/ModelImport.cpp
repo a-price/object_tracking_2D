@@ -47,6 +47,8 @@
 #include <vector>
 #include <assert.h>
 
+#include <iostream>
+
 // Comparison operator for vector set
 struct compareVectors
 {
@@ -102,6 +104,9 @@ typedef std::set<aiVector3D, compareVectors> VectorSet;
 
 GLMmodel* loadObject(const std::string& filename)
 {
+	std::cerr << "Loading with Assimp!" << std::endl;
+
+	// Setup import options
 	Assimp::Importer importer;
 	const int postprocessingFlags =
 			aiProcess_JoinIdenticalVertices |
@@ -114,6 +119,7 @@ GLMmodel* loadObject(const std::string& filename)
 			aiProcess_FixInfacingNormals |
 			aiProcess_SortByPType;
 
+	// Read the source file
 	const aiScene* pScene = importer.ReadFile(filename.c_str(),
 											  aiProcess_ValidateDataStructure |
 											  postprocessingFlags);
