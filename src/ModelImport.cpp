@@ -37,6 +37,8 @@
 
 #include "object_tracking_2D/ModelImport.h"
 
+#include <boost/filesystem.hpp>
+
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
 #include <assimp/scene.h>
@@ -104,8 +106,6 @@ typedef std::set<aiVector3D, compareVectors> VectorSet;
 
 GLMmodel* loadObject(const std::string& filename)
 {
-	std::cerr << "Loading with Assimp!" << std::endl;
-
 	// Setup import options
 	Assimp::Importer importer;
 	const int postprocessingFlags =
@@ -118,6 +118,12 @@ GLMmodel* loadObject(const std::string& filename)
 			//aiProcess_FindDegenerates |
 			aiProcess_FixInfacingNormals |
 			aiProcess_SortByPType;
+
+	// Locate the source file
+	std::string extensions;
+	importer.GetExtensionList(extensions);
+
+	std::cerr << "Loading with Assimp!\nAllowed Extensions: " << extensions << std::endl;
 
 	// Read the source file
 	const aiScene* pScene = importer.ReadFile(filename.c_str(),
