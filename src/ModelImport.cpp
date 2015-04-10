@@ -120,10 +120,12 @@ GLMmodel* loadObject(const std::string& filename)
 			aiProcess_SortByPType;
 
 	// Locate the source file
-	std::string extensions;
-	importer.GetExtensionList(extensions);
+	std::string extStr;
+	importer.GetExtensionList(extStr);
+	std::vector<std::string> extensions;
+    boost::split(extensions, extStr, boost::is_any_of(";"), boost::token_compress_on);
 
-	std::cerr << "Loading with Assimp!\nAllowed Extensions: " << extensions << std::endl;
+	std::cerr << "Loading with Assimp!\nAllowed Extensions: (" << extensions.size() << ")" << extStr << std::endl;
 
 	// Read the source file
 	const aiScene* pScene = importer.ReadFile(filename.c_str(),
