@@ -38,6 +38,8 @@
 #include "object_tracking_2D/ModelImport.h"
 
 #include <boost/filesystem.hpp>
+#include <boost/program_options.hpp>
+#include <boost/algorithm/string.hpp>
 
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
