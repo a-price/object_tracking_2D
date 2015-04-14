@@ -10,7 +10,7 @@ public:
     : ar_param_(1.0f)
     , num_particles_(100)
     , noise_l_(0.0005f)
-    , noise_h_(0.005f)
+    , noise_h_(0.02f)
     , num_annealing_layers_(1)
     , alpha_rate_(0.5f)
     , beta_rate_(0.5f)

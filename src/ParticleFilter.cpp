@@ -616,11 +616,12 @@ void CParticleFilter::calculateWeights(int i, CvMat* e, vector<CObjectModel::Sam
   CvScalar mean_e = cvAvg(e);
   float dist1 = -(float)mean_e.val[0];
   float dist2 = -((float)(vSamplePt.size() - e->rows)/(float)vSamplePt.size());
+  const float lambda_n = 0.1;
 
   if(!update2optimized)
-    prob_[i] = exp(lamda_e*dist1+lamda_v*dist2);
+    prob_[i] = exp(lamda_e*dist1+lamda_v*dist2) * (1-exp(-lambda_n*static_cast<float>(nov))); // Assuming that nov is number of valid correspondences
   else
-    prob_opt_[i] = exp(lamda_e*dist1+lamda_v*dist2);
+    prob_opt_[i] = exp(lamda_e*dist1+lamda_v*dist2) * (1-exp(-lambda_n*static_cast<float>(nov)));
 }
 
 void CParticleFilter::calculateMeanState(CvMat* MeanState/*=NULL*/)
