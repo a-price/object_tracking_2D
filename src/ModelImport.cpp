@@ -113,20 +113,20 @@ GLMmodel* loadObject(const std::string& filename)
 	// Setup import options
 	Assimp::Importer importer;
 	const int postprocessingFlags =
-			aiProcess_JoinIdenticalVertices |
-			aiProcess_GenNormals |
-			aiProcess_ImproveCacheLocality |
-			aiProcess_Triangulate |
-			aiProcess_OptimizeGraph |
-			aiProcess_OptimizeMeshes |
-			//aiProcess_FindDegenerates |
-			aiProcess_FixInfacingNormals |
-			aiProcess_SortByPType;
+	    aiProcess_JoinIdenticalVertices |
+	    aiProcess_GenNormals |
+	    aiProcess_ImproveCacheLocality |
+	    aiProcess_Triangulate |
+	    aiProcess_OptimizeGraph |
+	    aiProcess_OptimizeMeshes |
+	    //aiProcess_FindDegenerates |
+	    aiProcess_FixInfacingNormals |
+	    aiProcess_SortByPType;
 
 	// Read the source file
 	const aiScene* pScene = importer.ReadFile(filename.c_str(),
-											  aiProcess_ValidateDataStructure |
-											  postprocessingFlags);
+	                        aiProcess_ValidateDataStructure |
+	                        postprocessingFlags);
 
 	if (NULL == pScene)
 	{
@@ -169,7 +169,10 @@ GLMmodel* loadObject(const std::string& filename)
 	for (int i = 0; i < pMesh->mNumVertices; i++)
 	{
 		insertResult = vertices.find(pMesh->mVertices[i]);
-		if (vertices.end() == insertResult) { throw std::runtime_error("Unmatched vertex in set."); }
+		if (vertices.end() == insertResult)
+		{
+			throw std::runtime_error("Unmatched vertex in set.");
+		}
 		indexMap.push_back(std::distance(vertices.begin(), insertResult));
 		indexToSetIterator.push_back(insertResult);
 	}
@@ -215,7 +218,7 @@ GLMmodel* loadObject(const std::string& filename)
 	}
 
 	glmFacetNormals(model);          // (re)calculate face normals
-    glmVertexNormals(model, 90.0);   // (re)calculate vertex normals
+	glmVertexNormals(model, 90.0);   // (re)calculate vertex normals
 
 	return model;
 }
