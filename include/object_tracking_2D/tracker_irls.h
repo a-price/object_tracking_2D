@@ -19,9 +19,9 @@ public:
 		if(pe_surf_) delete pe_surf_;
 	}
 
-	virtual bool initTracker(std::string &obj_name, std::string &cam_name, std::string &intrinsic, std::string &distortion, int width, int height, CvMat* pose_init, std::string ach_channel)
+	virtual bool initTracker(std::string &obj_name, std::string &cam_name, std::string &intrinsic, std::string &distortion, int width, int height, CvMat* pose_init)
 	{
-		TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init, ach_channel);
+		TrackerBase::initTracker(obj_name, cam_name, intrinsic, distortion, width, height, pose_init);
 
 		initPoseEstimationSURF(width, height, obj_name, obj_name);
 
@@ -106,7 +106,6 @@ protected:
 				// 'pose' might be valid
 				mutex_.lock();
 				cvCopy(pose, pose_);
-				sendPoseACH(pose_); //AKAN
 				mutex_.unlock();
 				init_ = false;
 

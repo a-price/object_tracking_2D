@@ -40,7 +40,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     "In-source builds not allowed.
         Please make a new directory (named build) and run CMake from there.
         You may need to remove CMakeCache.txt. ")
-endif()
+endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
 ###############################################################################
 # Set up options
@@ -57,7 +57,7 @@ find_package( LAPACK    3.5 REQUIRED )
 #find_package( BULLET        REQUIRED )
 find_package(ASSIMP 3.0 QUIET)
 if (${ASSIMP_FOUND})
-  include_directories(${ASSIMP_INCLUDE_DIR})
+  include_directories(SYSTEM ${ASSIMP_INCLUDE_DIR})
   link_libraries(${ASSIMP_LIBRARIES})
   add_definitions(-DUSE_ASSIMP)
 endif (${ASSIMP_FOUND})
@@ -133,11 +133,10 @@ set(FITLINE_LIBS ${FITLINE_LIBS}
 set(IMAGE_LIBS ${IMAGE_LIBS}
         ${PROJECT_BINARY_DIR}/3rdparty/Image/libImageLib.so)
 
-include_directories( ${EBT_SOURCE_DIR}/3rdparty)
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-include_directories( ${Boost_INCLUDE_DIR} )
-include_directories( ${EBT_SOURCE_DIR}/include)
-#include_directories( ${EBT_SOURCE_DIR})
+include_directories(SYSTEM ${EBT_SOURCE_ROOT_DIR}/3rdparty)
+include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS} )
+include_directories(SYSTEM ${Boost_INCLUDE_DIR} )
+include_directories( ${EBT_SOURCE_ROOT_DIR}/include)
 
 set(ADDITIONAL_BOOST_LIBS
         boost_program_options boost_system boost_thread boost_filesystem)
@@ -161,7 +160,8 @@ set(incs
                 include/object_tracking_2D/randn.h
                 include/object_tracking_2D/ParticleFilter.h
                 include/object_tracking_2D/imageReceiver.h
-                include/object_tracking_2D/non_randomness.h)
+                include/object_tracking_2D/non_randomness.h
+)
 
 
 set(srcs
@@ -173,7 +173,9 @@ set(srcs
                 src/ModelImport.cpp
                 src/objectmodel.cpp
                 src/ParticleFilter.cpp
-                src/PoseEstimationSURF.cpp)
+                src/PoseEstimationSURF.cpp
+                src/tracker_base.cpp
+)
 
 
 set(EBT_src     src/main.cpp)
