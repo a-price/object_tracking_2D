@@ -175,6 +175,7 @@ set(srcs
                 src/ParticleFilter.cpp
                 src/PoseEstimationSURF.cpp
                 src/tracker_base.cpp
+                src/tracker_irls.cpp
 )
 
 
