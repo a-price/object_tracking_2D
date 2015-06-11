@@ -176,6 +176,9 @@ set(srcs
                 src/PoseEstimationSURF.cpp
                 src/tracker_base.cpp
                 src/tracker_irls.cpp
+                src/tracker_pf.cpp
+                src/tracker_pf_texture.cpp
+                src/tracker_pf_textureless.cpp
 )
 
 
