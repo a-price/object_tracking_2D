@@ -24,10 +24,7 @@ public:
 	void PF_getJacobianAndError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** J, CvMat** e);
 	void PF_getError(CvMat* Mprev, std::vector<CObjectModel::SamplePoint>& vSamplePt, CvMat** e);
 	Vector<6> calcJacobian(CvPoint3D32f& pts3, CvPoint2D32f& pts2, CvPoint2D32f& ptsnv, double ptsd, const SE3 &E);
-	inline CvMat* getPose()
-	{
-		return pose_;
-	}
+	inline CvMat* getPose() { return pose_; }
 
 protected:
 	CvMat *pose_;

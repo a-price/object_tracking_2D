@@ -60,47 +60,18 @@ public:
 	void loadKeyframes(string obj_name);
 	void loadEdgeTemplates(const std::string& obj_name);
 
-	inline std::vector<IplImage*>& getKeyframeImages()
-	{
-		return keyframe_images_;
-	}
-	inline std::vector<CvMat*>& getKeyframePoses()
-	{
-		return keyframe_poses_;
-	}
-	inline std::vector<CvMat*>& getKeyframeKeypoints2D()
-	{
-		return keyframe_keypoints_2d_;
-	}
-	inline std::vector<CvMat*>& getKeyframeKeypoints3D()
-	{
-		return keyframe_keypoints_3d_;
-	}
-	inline std::vector<CvMat*>& getKeyframeDescriptors()
-	{
-		return keyframe_descriptors_;
-	}
-	int getNumOfKeyframes()
-	{
-		return num_keyframes_;
-	}
-	int getNumOfEdgeTemplates()
-	{
-		return num_edge_templates_;
-	}
-	inline CvMat* getEdgeTemplatePose(int i)
-	{
-		return edge_template_poses_[i];
-	}
+	inline std::vector<IplImage*>& getKeyframeImages()   { return keyframe_images_; }
+	inline std::vector<CvMat*>& getKeyframePoses()       { return keyframe_poses_; }
+	inline std::vector<CvMat*>& getKeyframeKeypoints2D() { return keyframe_keypoints_2d_; }
+	inline std::vector<CvMat*>& getKeyframeKeypoints3D() { return keyframe_keypoints_3d_; }
+	inline std::vector<CvMat*>& getKeyframeDescriptors() { return keyframe_descriptors_; }
+	inline int getNumOfKeyframes()                       { return num_keyframes_; }
+	inline int getNumOfEdgeTemplates()                   { return num_edge_templates_; }
+	inline CvMat* getEdgeTemplatePose(int i)             { return edge_template_poses_[i]; }
 
-	inline vector<SamplePoint>& getVisibleSamplePoints()
-	{
-		return visible_sample_points_;
-	}
-	inline int getNumberOfVisibleSamplePoints()
-	{
-		return visible_sample_points_.size();
-	}
+	inline vector<SamplePoint>& getVisibleSamplePoints() { return visible_sample_points_; }
+	inline int getNumberOfVisibleSamplePoints()          { return visible_sample_points_.size(); }
+
 	bool isEnoughValidSamplePoints(double th_ratio = 0.5);
 	double GetValidVisibleSamplePointsRatio();
 

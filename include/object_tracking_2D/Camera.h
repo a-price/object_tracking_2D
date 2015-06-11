@@ -18,34 +18,13 @@ public:
 	~CCamera(void);
 
 	IplImage* getImage();
-	inline CvMat* getIntrinsicParams()
-	{
-		return intrinsic_;
-	}
-	inline CvMat* getDistortionParams()
-	{
-		return distortion_;
-	}
-	inline int getWidth()
-	{
-		return width_;
-	}
-	inline int getHeight()
-	{
-		return height_;
-	}
-	inline IplImage* getEdge()
-	{
-		return img_edge_;
-	}
-	inline bool IsColorImage()
-	{
-		return color_;
-	}
-	inline bool IsCamera()
-	{
-		return (cam_type_ == CAM_SEQ) ? (false) : (true);
-	}
+	inline CvMat* getIntrinsicParams()   { return intrinsic_; }
+	inline CvMat* getDistortionParams()  { return distortion_; }
+	inline int getWidth()                { return width_; }
+	inline int getHeight()               { return height_; }
+	inline IplImage* getEdge()           { return img_edge_; }
+	inline bool IsColorImage()           { return color_; }
+	inline bool IsCamera()               { return (cam_type_ == CAM_SEQ) ? (false) : (true); }
 
 	enum {CAM_SEQ, CAM_NORMAL, CAM_FIREI, CAM_FLEA, CAM_OPENNI, CAM_ACH};
 

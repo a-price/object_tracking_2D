@@ -53,118 +53,35 @@ public:
 		boost::signals2::mutex* mutex;
 	};
 
-	inline int    getWidth()
-	{
-		return width_;
-	}
-	inline int    getHeight()
-	{
-		return height_;
-	}
-	inline int    getCannyLow()
-	{
-		return th_canny_l_;
-	}
-	inline void   setCannyLow(int th)
-	{
-		th_canny_l_ = th;
-	}
-	inline int    getCannyHigh()
-	{
-		return th_canny_h_;
-	}
-	inline void   setCannyHigh(int th)
-	{
-		th_canny_h_ = th;
-	}
-	inline float  getSampleStep()
-	{
-		return sample_step_;
-	}
-	inline void   setSampleStep(float ss)
-	{
-		sample_step_ = ss;
-	}
-	inline int    getMaxSearchDistance()
-	{
-		return maxd_;
-	}
-	inline void   setMaxSearchDistance(int d)
-	{
-		maxd_ = d;
-	}
-	inline bool   getConsideringDullEdges()
-	{
-		return dulledge_;
-	}
-	inline void   setConsideringDullEdges(bool tf)
-	{
-		dulledge_ = tf;
-	}
-	inline bool   getDisplay()
-	{
-		return display_;
-	}
-	inline void   setDisplay(bool tf)
-	{
-		display_ = tf;
-	}
-	inline bool   getNetworkMode()
-	{
-		return net_;
-	}
-	inline void   setNetworkMode(bool tf)
-	{
-		net_ = tf;
-	}
-	inline bool   getSaveResultText()
-	{
-		return save_rslt_txt_;
-	}
-	inline void   setSaveResultText(bool tf)
-	{
-		save_rslt_txt_ = tf;
-	}
-	inline bool   getSaveResultImage()
-	{
-		return save_rslt_img_;
-	}
-	inline void   setSaveResultImage(bool tf)
-	{
-		save_rslt_img_ = tf;
-	}
-	inline CvMat*   getPose()
-	{
-		return pose_;
-	}
-	inline void   setPose(CvMat* pose)
-	{
-		pose_ = pose;
-	}
-	inline IplImage*   getResultImage()
-	{
-		return img_result_;
-	}
-	inline IplImage*   getEdgeImage()
-	{
-		return img_edge_;
-	}
-	inline void   setMinKeypointMatches(int d)
-	{
-		min_keypoint_matches = d;
-	}
-	inline void   setTracking(bool use_tracking)
-	{
-		use_tracking_ = use_tracking;
-	}
-	inline std::string& getSaveResultPath()
-	{
-		return str_result_path_;
-	}
-	inline void   saveKeyframe()
-	{
-		saveKeyframe_ = true;
-	}
+	inline int    getWidth()                          { return width_; }
+	inline int    getHeight()                         { return height_; }
+	inline int    getCannyLow()                       { return th_canny_l_; }
+	inline void   setCannyLow(int th)                 { th_canny_l_ = th; }
+	inline int    getCannyHigh()                      { return th_canny_h_; }
+	inline void   setCannyHigh(int th)                { th_canny_h_ = th; }
+	inline float  getSampleStep()                     { return sample_step_; }
+	inline void   setSampleStep(float ss)             { sample_step_ = ss; }
+	inline int    getMaxSearchDistance()              { return maxd_; }
+	inline void   setMaxSearchDistance(int d)         { maxd_ = d; }
+	inline bool   getConsideringDullEdges()           { return dulledge_; }
+	inline void   setConsideringDullEdges(bool tf)    { dulledge_ = tf; }
+	inline bool   getDisplay()                        { return display_; }
+	inline void   setDisplay(bool tf)                 { display_ = tf; }
+	inline bool   getNetworkMode()                    { return net_; }
+	inline void   setNetworkMode(bool tf)             { net_ = tf; }
+	inline bool   getSaveResultText()                 { return save_rslt_txt_; }
+	inline void   setSaveResultText(bool tf)          { save_rslt_txt_ = tf; }
+	inline bool   getSaveResultImage()                { return save_rslt_img_; }
+	inline void   setSaveResultImage(bool tf)         { save_rslt_img_ = tf; }
+	inline CvMat*   getPose()                         { return pose_; }
+	inline void   setPose(CvMat* pose)                { pose_ = pose; }
+	inline IplImage*   getResultImage()               { return img_result_; }
+	inline IplImage*   getEdgeImage()                 { return img_edge_; }
+	inline void   setMinKeypointMatches(int d)        { min_keypoint_matches = d; }
+	inline void   setTracking(bool use_tracking)      { use_tracking_ = use_tracking; }
+	inline std::string& getSaveResultPath()           { return str_result_path_; }
+	inline void   saveKeyframe()                      { saveKeyframe_ = true; }
+
 	bool init_;
 	bool setSaveResultPath(std::string& path);
 

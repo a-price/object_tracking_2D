@@ -12,7 +12,7 @@ public:
 	virtual bool initTracker(std::string &obj_name, std::string &cam_name, std::string &intrinsic, std::string &distortion, int width, int height, CvMat* pose_init);
 
 	inline void setThresholdCM(float th) { th_cm_ = th; }
-	inline float getThresholdCM() { return th_cm_; }
+	inline float getThresholdCM()        { return th_cm_; }
 
 protected:
 	CPoseEstimationSURF* pe_surf_;

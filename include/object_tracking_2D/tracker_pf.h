@@ -12,23 +12,10 @@ public:
 
 	bool initParticleFilter();
 
-	inline void setNumAnnealingLayers(int l)
-	{
-		num_annealing_layers_= l;
-		initAnnealing();
-	}
-	inline void setNumParticle(int n)
-	{
-		num_particles_ = n;
-	}
-	inline float getThresholdRatioNeff()
-	{
-		return th_neff_ratio_;
-	}
-	inline void setThresholdRatioNeff(float t)
-	{
-		th_neff_ratio_ = t;
-	}
+	inline void setNumAnnealingLayers(int l)   { num_annealing_layers_= l; initAnnealing(); }
+	inline void setNumParticle(int n)          { num_particles_ = n; }
+	inline float getThresholdRatioNeff()       { return th_neff_ratio_; }
+	inline void setThresholdRatioNeff(float t) { th_neff_ratio_ = t; }
 
 protected:
 	void initAnnealing();
